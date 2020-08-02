@@ -14,7 +14,7 @@ class ProfileController extends Controller
     }
 
     public function store(ProfileRequest $request, User $user){
-        $path = $request->icon->storeAs('public/icons', Auth::id() . '.jpg');
+        $path = $request->file('icon')->storeAs('public/icons', Auth::id() . '.jpg');
         $image_name = basename($path);
         $user->icon = $image_name;
         $user->save();
